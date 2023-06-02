@@ -7,6 +7,6 @@ $data = json_decode($response, true);
 
 print("<pre>");
 foreach($data["results"] as $key => $value){
-    car_dump($value["name"]);
+    var_dump($value["name"]);
 }
 print("</pre>");
