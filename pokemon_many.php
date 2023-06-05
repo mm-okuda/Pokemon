@@ -32,6 +32,7 @@ foreach($data["results"] as $value){
 
     $name[$i] = $value["name"];
     $image[$i] = $data["sprites"]["front_default"]; 
+    $type[$i] = $data["types"][0]["type"]["name"];
     $height[$i] = $data["height"];
     $weight[$i] = $data["weight"];
 
@@ -46,6 +47,8 @@ foreach($data2["results"] as $value2){
 
     $n++;
 }       
+
+
 
 ?>
 
@@ -68,6 +71,8 @@ foreach($data2["results"] as $value2){
         echo "名前（英語）：" . $name[$k];
         echo "<br>";
         echo "名前（日本語）：" . $japanese[$k];
+        echo "<br>";
+        echo "タイプ：" . $type[$k];
         echo "<br>";
         echo "高さ：" . $height[$k];
         echo "<br>";
