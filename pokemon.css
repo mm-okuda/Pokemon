@@ -1,8 +1,16 @@
+body{
+    text-align: center;
+}
+
 h1{
     background-color:bisque;
 }
 
 .block{
     float: left;
-    width: 450px;
+    width: 480px;
+}
+
+form{
+    clear: both;
 }
