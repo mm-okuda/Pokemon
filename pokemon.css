@@ -1,14 +1,17 @@
 body{
     text-align: center;
+    background-color: black;
 }
 
 h1{
     background-color:bisque;
+    color: rgb(190, 87, 87);
 }
 
 .block{
     float: left;
     width: 480px;
+    color: white;
 }
 
 form{
