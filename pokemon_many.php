@@ -1,25 +1,44 @@
 <?php
+$number = 10;
+
+if(!isset($_GET["number"])){
+    $number=10;
+}
+
+else if(isset($_GET["number"])){
+    if($_GET["number"]==10){
+        $number=10;
+    }
+    else if($_GET["number"]==20){
+        $number=20;
+    }
+    else if($_GET["number"]==50){
+        $number=50;
+    }
+}
 
 if(!isset($_GET["before"]) && !isset($_GET["next"])){
     $page = 0;
 }
 
 else if(isset($_GET["before"])){
-    $page = (int)$_GET["page"]-10;
+    $page = (int)$_GET["page"]-$number;
 }
 else if(isset($_GET["next"])){
-    $page = (int)$_GET["page"]+10;
+    $page = (int)$_GET["page"]+$number;
 }
 
-$url = "https://pokeapi.co/api/v2/pokemon/?limit=" . $page+10 . "&offset=" . $page;
+
+$url = "https://pokeapi.co/api/v2/pokemon/?limit=" . $page+$number . "&offset=" . $page;
 $response = file_get_contents($url);
-
+    
 $data = json_decode($response, true);
-
-$url2 = "https://pokeapi.co/api/v2/pokemon-species/?limit=" . $page+10 . "&offset=" . $page;
+    
+$url2 = "https://pokeapi.co/api/v2/pokemon-species/?limit=" . $page+$number . "&offset=" . $page;
 $response2 = file_get_contents($url2);
-
+    
 $data2 = json_decode($response2, true);
+
 
 $i = 0;
 $n = 0;
@@ -46,7 +65,8 @@ foreach($data2["results"] as $value2){
     $japanese[$n] = $data2["names"][0]["name"];
 
     $n++;
-}       
+}   
+
 
 
 
@@ -64,7 +84,7 @@ foreach($data2["results"] as $value2){
     <h1>ポケモン図鑑</h1>
     
     <?php
-    for($k=0; $k<10; $k++){
+    for($k=0; $k<$number; $k++){
         echo '<div class="block">';
         echo '<img src = "' . $image[$k] . '">';
         echo "<br>";
@@ -86,6 +106,25 @@ foreach($data2["results"] as $value2){
         <input type="hidden" name="page" value=<?php echo $page;?>>
         <input type="submit" name="before" value="前へ">
         <input type="submit" name="next" value="次へ">
+    
+        <select name="number" onchange="submit(this.form)">
+            <?php if($number==10){
+                echo '<option value="10" selected>10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>';
+            }
+            else if($number==20){
+                echo '<option value="10">10</option>
+                <option value="20" selected>20</option>
+                <option value="50">50</option>';
+            }
+            else if($number==50){
+                echo '<option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50" selected>50</option>';
+            }?>
+        </select>
     </form>
+
 </body>
 </html>
