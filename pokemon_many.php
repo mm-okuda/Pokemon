@@ -90,9 +90,9 @@ foreach($data2["results"] as $value2){
         echo '<div class="block">';
         echo '<img src = "' . $image[$k] . '">';
         echo "<br>";
-        echo "名前（英語）：" . $name[$k];
+        echo "name：" . $name[$k];
         echo "<br>";
-        echo "名前（日本語）：" . $japanese[$k];
+        echo "名前：" . $japanese[$k];
         echo "<br>";
         echo "タイプ：" . $type[$k][0];
         if(isset($type[$k][1])){
