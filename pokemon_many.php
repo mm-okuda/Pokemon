@@ -50,7 +50,10 @@ foreach($data["results"] as $value){
 
     $name[$i] = $value["name"];
     $image[$i] = $data["sprites"]["front_default"]; 
-    $type[$i] = $data["types"][0]["type"]["name"];
+    $type[$i][0] = $data["types"][0]["type"]["name"];
+    if(isset($data["types"][1])){
+        $type[$i][1] = $data["types"][1]["type"]["name"];
+    }
     $height[$i] = $data["height"];
     $weight[$i] = $data["weight"];
 
@@ -91,20 +94,21 @@ foreach($data2["results"] as $value2){
         echo "<br>";
         echo "名前（日本語）：" . $japanese[$k];
         echo "<br>";
-        echo "タイプ：" . $type[$k];
+        echo "タイプ：" . $type[$k][0];
+        if(isset($type[$k][1])){
+            echo "、" . $type[$k][1];
+        }
         echo "<br>";
         echo "たかさ：" . $height[$k];
         echo "<br>";
         echo "おもさ：" . $weight[$k];
         echo "<br>";
         echo '<input type="submit" name="submit" value=' . $page+$k+1 . '>';
-
         echo "<br><br><br>";
         echo '</div>';
     }
     ?>
     </form>
-    <br><br>
     <form action="pokemon_many2.php" method="get">
         <input type="hidden" name="page" value=<?php echo $page;?>>
         <input type="submit" name="before" value="前のページへ">
