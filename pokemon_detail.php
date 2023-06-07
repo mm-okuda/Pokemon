@@ -9,7 +9,6 @@ if($_POST["submit"]){
     $response2 = file_get_contents($url2);
 
     $data2 = json_decode($response2, true);
-    var_dump($_POST["submit"]);
 }
 ?>
 
