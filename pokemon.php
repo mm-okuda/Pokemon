@@ -22,14 +22,18 @@ $data2 = json_decode($response2, true);
 <body>
     <h1>ポケモン図鑑</h1>
     <p>
-       <img src = <?php echo $data["sprites"]["front_default"]; ?> ><br>
+       <img src = <?php echo $data["sprites"]["front_default"]; ?> >
+       <img src = <?php echo $data["sprites"]["back_default"]; ?> ><br>
        名前（英語）：<?php echo $data["name"]; ?><br>
        名前（日本語）：<?php echo $data2["names"][0]["name"]; ?><br>
-       高さ：<?php echo $data["height"]; ?><br>
-       重さ：<?php echo $data["weight"]; ?>
+       タイプ：<?php echo $data["types"][0]["type"]["name"]; ?><br>
+       <?php echo $data["types"][1]["type"]["name"]; ?><br>
+       説明：<?php echo $data2["flavor_text_entries"][29]["flavor_text"]; ?><br>
+       <?php echo $data2["flavor_text_entries"][45]["flavor_text"]; ?><br>
+       <?php echo $data2["flavor_text_entries"][62]["flavor_text"]; ?><br>
+       たかさ：<?php echo $data["height"]; ?><br>
+       おもさ：<?php echo $data["weight"]; ?>
     </p>
-    
-    
     
 </body>
 </html>
