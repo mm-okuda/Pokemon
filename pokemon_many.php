@@ -28,7 +28,6 @@ else if(isset($_GET["next"])){
     $page = (int)$_GET["page"]+$number;
 }
 
-
 $url = "https://pokeapi.co/api/v2/pokemon/?limit=" . $page+$number . "&offset=" . $page;
 $response = file_get_contents($url);
     
@@ -67,9 +66,6 @@ foreach($data2["results"] as $value2){
     $n++;
 }   
 
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -83,6 +79,7 @@ foreach($data2["results"] as $value2){
 <body>
     <h1>ポケモン図鑑</h1>
     
+    <form action="pokemon_detail.php" method="post">
     <?php
     for($k=0; $k<$number; $k++){
         echo '<div class="block">';
@@ -94,13 +91,16 @@ foreach($data2["results"] as $value2){
         echo "<br>";
         echo "タイプ：" . $type[$k];
         echo "<br>";
-        echo "高さ：" . $height[$k];
+        echo "たかさ：" . $height[$k];
         echo "<br>";
-        echo "重さ：" . $weight[$k];
+        echo "おもさ：" . $weight[$k];
+        echo "<br>";
+        echo '<input type="submit" name="submit" value=' . $k+1 . '>';
         echo "<br><br>";
         echo '</div>';
     }
     ?>
+    </form>
     <br><br>
     <form action="pokemon_many2.php" method="get">
         <input type="hidden" name="page" value=<?php echo $page;?>>
