@@ -5,6 +5,14 @@ if($_POST["submit"]){
     $response = file_get_contents($url);
     $data = json_decode($response, true);
 
+    $response1 = file_get_contents($data["types"][0]["type"]["url"]);
+    $data1 = json_decode($response1, true);
+
+    if(isset($data["types"][1])){
+        $response3 = file_get_contents($data["types"][1]["type"]["url"]);
+        $data3 = json_decode($response3, true);
+    }
+
     $url2 = "https://pokeapi.co/api/v2/pokemon-species/". $_POST["submit"] . "/";
     $response2 = file_get_contents($url2);
 
@@ -27,9 +35,13 @@ if($_POST["submit"]){
        <img src = <?php echo $data["sprites"]["back_default"]; ?> class="back"><br>
        name：<?php echo $data["name"]; ?><br><br>
        名前：<?php echo $data2["names"][0]["name"]; ?><br><br>
-       タイプ：<?php echo $data["types"][0]["type"]["name"]; ?>
+       type：<?php echo $data["types"][0]["type"]["name"]; ?>
        <?php if(isset($data["types"][1])){
           echo "、" . $data["types"][1]["type"]["name"];
+       }?><br>
+       タイプ：<?php echo $data1["names"][0]["name"] ?>
+       <?php if(isset($data["types"][1])){
+          echo "、" . $data3["names"][0]["name"];
        }?><br><br>
        説明：<?php echo $data2["flavor_text_entries"][29]["flavor_text"]; ?><br>
        <?php echo $data2["flavor_text_entries"][45]["flavor_text"]; ?><br>
