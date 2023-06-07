@@ -79,6 +79,7 @@ foreach($data2["results"] as $value2){
 </head>
 <body>
     <h1>ポケモン図鑑</h1>
+    <p>数字ボタンを押すと詳細ページに飛びます。</p>
     
     <form action="pokemon_detail.php" method="post">
     <?php
@@ -106,24 +107,24 @@ foreach($data2["results"] as $value2){
     <br><br>
     <form action="pokemon_many2.php" method="get">
         <input type="hidden" name="page" value=<?php echo $page;?>>
-        <input type="submit" name="before" value="前へ">
-        <input type="submit" name="next" value="次へ">
+        <input type="submit" name="before" value="前のページへ">
+        <input type="submit" name="next" value="次のページへ">
     
         <select name="number" onchange="submit(this.form)">
             <?php if($number==10){
-                echo '<option value="10" selected>10</option>
-                <option value="20">20</option>
-                <option value="50">50</option>';
+                echo '<option value="10" selected>10件</option>
+                <option value="20">20件</option>
+                <option value="50">50件</option>';
             }
             else if($number==20){
-                echo '<option value="10">10</option>
-                <option value="20" selected>20</option>
-                <option value="50">50</option>';
+                echo '<option value="10">10件</option>
+                <option value="20" selected>20件</option>
+                <option value="50">50件</option>';
             }
             else if($number==50){
-                echo '<option value="10">10</option>
-                <option value="20">20</option>
-                <option value="50" selected>50</option>';
+                echo '<option value="10">10件</option>
+                <option value="20">20件</option>
+                <option value="50" selected>50件</option>';
             }?>
         </select>
     </form>
