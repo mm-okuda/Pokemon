@@ -99,7 +99,7 @@ foreach($data2["results"] as $value2){
         echo "<br>";
         echo '<input type="submit" name="submit" value=' . $page+$k+1 . '>';
 
-        echo "<br><br>";
+        echo "<br><br><br>";
         echo '</div>';
     }
     ?>
