@@ -66,6 +66,7 @@ foreach($data2["results"] as $value2){
     $n++;
 }   
 
+
 ?>
 
 <!DOCTYPE html>
@@ -95,7 +96,8 @@ foreach($data2["results"] as $value2){
         echo "<br>";
         echo "おもさ：" . $weight[$k];
         echo "<br>";
-        echo '<input type="submit" name="submit" value=' . $k+1 . '>';
+        echo '<input type="submit" name="submit" value=' . $page+$k+1 . '>';
+
         echo "<br><br>";
         echo '</div>';
     }
