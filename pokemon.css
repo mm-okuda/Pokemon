@@ -8,6 +8,10 @@ h1{
     color: rgb(190, 87, 87);
 }
 
+.image{
+    color: white;
+}
+
 .block{
     float: left;
     width: 480px;
