@@ -33,7 +33,7 @@ if($_POST["submit"]){
        <?php echo $data2["flavor_text_entries"][45]["flavor_text"]; ?><br>
        <?php echo $data2["flavor_text_entries"][62]["flavor_text"]; ?><br>
        たかさ：<?php echo $data["height"]; ?><br>
-       おもさ：<?php echo $data["weight"]; ?>
+       おもさ：<?php echo $data["weight"]; ?><br><br>
 </div>
 <a href="pokemon_many2.php">前のページに戻る</a>
     
