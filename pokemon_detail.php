@@ -27,7 +27,10 @@ if($_POST["submit"]){
        <img src = <?php echo $data["sprites"]["back_default"]; ?> class="back"><br>
        名前（英語）：<?php echo $data["name"]; ?><br>
        名前（日本語）：<?php echo $data2["names"][0]["name"]; ?><br>
-       タイプ：<?php echo $data["types"][0]["type"]["name"]; ?><br>
+       タイプ：<?php echo $data["types"][0]["type"]["name"]; ?>
+       <?php if(isset($data["types"][1])){
+          echo "、" . $data["types"][1]["type"]["name"];
+       }?><br>
        説明：<?php echo $data2["flavor_text_entries"][29]["flavor_text"]; ?><br>
        <?php echo $data2["flavor_text_entries"][45]["flavor_text"]; ?><br>
        <?php echo $data2["flavor_text_entries"][62]["flavor_text"]; ?><br>
