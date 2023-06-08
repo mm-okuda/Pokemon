@@ -30,12 +30,10 @@ else if(isset($_GET["next"])){
 
 $url = "https://pokeapi.co/api/v2/pokemon/?limit=" . $page+$number . "&offset=" . $page;
 $response = file_get_contents($url);
-    
 $data = json_decode($response, true);
     
 $url2 = "https://pokeapi.co/api/v2/pokemon-species/?limit=" . $page+$number . "&offset=" . $page;
-$response2 = file_get_contents($url2);
-    
+$response2 = file_get_contents($url2);  
 $data2 = json_decode($response2, true);
 
 
@@ -48,11 +46,23 @@ foreach($data["results"] as $value){
     $response = file_get_contents($value["url"]);
     $data = json_decode($response, true);
 
+    $response1 = file_get_contents($data["types"][0]["type"]["url"]);
+    $data1 = json_decode($response1, true);
+
+    if(isset($data["types"][1])){
+        $response3 = file_get_contents($data["types"][1]["type"]["url"]);
+        $data3 = json_decode($response3, true);
+    }
+
     $name[$i] = $value["name"];
     $image[$i] = $data["sprites"]["front_default"]; 
     $type[$i][0] = $data["types"][0]["type"]["name"];
     if(isset($data["types"][1])){
         $type[$i][1] = $data["types"][1]["type"]["name"];
+    }
+    $type1[$i][0] = $data1["names"][0]["name"];
+    if(isset($data["types"][1])){
+        $type1[$i][1] = $data3["names"][0]["name"];
     }
     $height[$i] = $data["height"];
     $weight[$i] = $data["weight"];
@@ -88,15 +98,13 @@ foreach($data2["results"] as $value2){
     <?php
     for($k=0; $k<$number; $k++){
         echo '<div class="block">';
-        echo '<img src = "' . $image[$k] . '">';
+        echo '<img src = "' . $image[$k] . '" class="many">';
         echo "<br>";
-        echo "name：" . $name[$k];
+        echo "名前：" . $name[$k] . "（" .  $japanese[$k] . "）";
         echo "<br>";
-        echo "名前：" . $japanese[$k];
-        echo "<br>";
-        echo "タイプ：" . $type[$k][0];
-        if(isset($type[$k][1])){
-            echo "、" . $type[$k][1];
+        echo "タイプ：" . $type[$k][0] . "（" . $type1[$k][0] . "）";
+        if(isset($type1[$k][1])){
+            echo "、" . $type[$k][1] . "（" . $type1[$k][1] . "）";
         }
         echo "<br>";
         echo "たかさ：" . $height[$k];
