@@ -33,15 +33,10 @@ if($_POST["submit"]){
     <div class="image">
        <img src = <?php echo $data["sprites"]["front_default"]; ?> class="front">
        <img src = <?php echo $data["sprites"]["back_default"]; ?> class="back"><br>
-       name：<?php echo $data["name"]; ?><br><br>
-       名前：<?php echo $data2["names"][0]["name"]; ?><br><br>
-       type：<?php echo $data["types"][0]["type"]["name"]; ?>
+       名前：<?php echo $data["name"] . "（" . $data2["names"][0]["name"] . "）"; ?><br><br>
+       タイプ：<?php echo $data["types"][0]["type"]["name"] . "（" . $data1["names"][0]["name"] . "）" ?>
        <?php if(isset($data["types"][1])){
-          echo "、" . $data["types"][1]["type"]["name"];
-       }?><br>
-       タイプ：<?php echo $data1["names"][0]["name"] ?>
-       <?php if(isset($data["types"][1])){
-          echo "、" . $data3["names"][0]["name"];
+          echo "、" . $data["types"][1]["type"]["name"] . "（" . $data3["names"][0]["name"] . "）";
        }?><br><br>
        説明：<?php echo $data2["flavor_text_entries"][29]["flavor_text"]; ?><br>
        <?php echo $data2["flavor_text_entries"][45]["flavor_text"]; ?><br>
@@ -49,7 +44,7 @@ if($_POST["submit"]){
        たかさ：<?php echo $data["height"]; ?><br><br>
        おもさ：<?php echo $data["weight"]; ?><br><br><br>
 </div>
-<a href="pokemon_many2.php">前のページに戻る</a>
+<a href="#" onclick="history.back()">前のページに戻る</a>
     
 </body>
 </html>
